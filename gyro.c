@@ -273,9 +273,9 @@ void perform_self_test_and_calibration() {
     uint8_t self_test_z = i2c_read_byte(REG_SELF_TEST_Z_GYRO);
     
     // Calculate factory trim
-    float factory_trim_x = (float)(2620.0 * pow(1.01, (float)self_test_x - 1.0));
-    float factory_trim_y = (float)(2620.0 * pow(1.01, (float)self_test_y - 1.0));
-    float factory_trim_z = (float)(2620.0 * pow(1.01, (float)self_test_z - 1.0));
+    float factory_trim_x = (float)((2620.0 / 8.0) * pow(1.01, (float)self_test_x - 1.0));
+    float factory_trim_y = (float)((2620.0 / 8.0) * pow(1.01, (float)self_test_y - 1.0));
+    float factory_trim_z = (float)((2620.0 / 8.0) * pow(1.01, (float)self_test_z - 1.0));
     
     printf("Factory Trim: X=%.2f, Y=%.2f, Z=%.2f\n", 
            factory_trim_x, factory_trim_y, factory_trim_z);
